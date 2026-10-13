@@ -1,0 +1,1242 @@
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Nexus | Computer Science Department</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #07111f;
+            --card: #101e33;
+            --cyan: #00d9ff;
+            --purple: #8b5cf6;
+            --text: #eaf3ff;
+            --muted: #9aacc5;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: rgba(5, 15, 30, 0.96);
+            border-bottom: 1px solid #20334d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: var(--cyan);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: #c5d4e8;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .portal-btn,
+        .primary-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            color: white;
+            background: linear-gradient(100deg, #087cff, #873cff);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .portal-btn:hover,
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 22px #168bff70;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            background: transparent;
+            border: none;
+            font-size: 26px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, #07111f 15%, #07111fe8 45%, #07111f50),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            right: 8%;
+            top: 15%;
+            background: #713dff30;
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 650px;
+            padding: 65px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--cyan);
+            border: 1px solid #00d9ff60;
+            background: #00d9ff10;
+            border-radius: 20px;
+            padding: 7px 14px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.12;
+            margin-bottom: 22px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #00e5ff, #8b5cf6, #ff62c0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #b6c6dc;
+            max-width: 520px;
+            margin-bottom: 28px;
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border: 1px solid #56708f;
+            border-radius: 25px;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .secondary-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 75px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-label {
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 4vw, 38px);
+            margin: 10px 0 15px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: linear-gradient(135deg, #0a192d, #0c1427);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 1px solid #344b70;
+            box-shadow: 0 15px 50px #0005;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin: 15px 0 25px;
+        }
+
+        .about-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .point {
+            background: #12233a;
+            border: 1px solid #243b59;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .point strong {
+            color: var(--cyan);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .point span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* COURSES */
+
+        .courses {
+            background: #07111f;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .course-card {
+            background: linear-gradient(145deg, #13243c, #0c1729);
+            border: 1px solid #253d5d;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyan);
+            box-shadow: 0 15px 35px #00d9ff12;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 175px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 22px;
+        }
+
+        .course-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .course-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .course-content p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 17px;
+        }
+
+        .course-link {
+            color: var(--cyan);
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* FACULTY */
+
+        .faculty {
+            background: linear-gradient(135deg, #0b192c, #10142b);
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .faculty-card {
+            text-align: center;
+            background: #111f34;
+            border: 1px solid #283d59;
+            border-radius: 15px;
+            padding: 28px 20px;
+            transition: 0.3s;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+        }
+
+        .faculty-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 17px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #087cff, #9b4dff);
+            border: 3px solid #6f9bff60;
+        }
+
+        .faculty-card h3 {
+            margin-bottom: 6px;
+        }
+
+        .faculty-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .faculty-card .special {
+            color: var(--cyan);
+            margin-top: 10px;
+        }
+
+        /* STATISTICS */
+
+        .stats {
+            background: linear-gradient(100deg, #0c2850, #171343, #102b4b);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat h2 {
+            color: var(--cyan);
+            font-size: 38px;
+        }
+
+        .stat p {
+            color: #d1def0;
+            font-size: 14px;
+        }
+
+        /* RESEARCH */
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .research-card {
+            padding: 25px;
+            border-radius: 12px;
+            background: #101e33;
+            border: 1px solid #293f60;
+        }
+
+        .research-card .symbol {
+            font-size: 30px;
+            color: var(--cyan);
+        }
+
+        .research-card h3 {
+            margin: 12px 0;
+        }
+
+        .research-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ANNOUNCEMENTS */
+
+        .announcements {
+            background: #0a1729;
+        }
+
+        .announcement-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .announcement {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            padding: 20px;
+            background: #111f34;
+            border: 1px solid #293e5d;
+            border-radius: 12px;
+        }
+
+        .announcement-icon {
+            font-size: 28px;
+        }
+
+        .announcement h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .announcement p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .new-label {
+            display: inline-block;
+            color: #00f0b5;
+            background: #00f0b510;
+            border: 1px solid #00f0b550;
+            border-radius: 15px;
+            padding: 3px 9px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+
+        /* CONTACT */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .contact-info {
+            color: var(--muted);
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin: 17px 0;
+        }
+
+        .contact-info strong {
+            color: var(--cyan);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #304661;
+            background: #101e33;
+            color: white;
+            border-radius: 9px;
+            outline: none;
+            font: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--cyan);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            justify-self: start;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #040b14;
+            border-top: 1px solid #203047;
+            padding: 25px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--cyan);
+        }
+
+        .social-links {
+            margin-bottom: 12px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #d6e7ff;
+        }
+
+        .social-links a:hover {
+            color: var(--cyan);
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 950px) {
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .portal-btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .course-grid,
+            .research-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                padding: 15px 5%;
+                background: #081629;
+                border-bottom: 1px solid #263d59;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 480px;
+                background-position: 60% center;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 19px;
+            }
+
+            .portal-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .course-grid,
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-points {
+                grid-template-columns: 1fr;
+            }
+
+            .secondary-btn {
+                margin: 12px 0 0;
+            }
+
+            .announcement {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">&lt;/&gt; <span>CS NEXUS</span></a>
+
+                <div class="nav-links" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#courses">Courses</a>
+                    <a href="#faculty">Faculty</a>
+                    <a href="#research">Research</a>
+                    <a href="#announcements">Announcements</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <button class="portal-btn" id="portalBtn">
+                    Student Portal ↗
+                </button>
+
+                <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="tag">✦ CODE · CREATE · INNOVATE</div>
+
+                    <h1>
+                        Department of<br>
+                        <span class="gradient-text">Computer Science</span>
+                    </h1>
+
+                    <p>
+                        Empowering minds with cutting-edge technology,
+                        innovative research, and real-world skills.
+                        Build the future with us.
+                    </p>
+
+                    <a href="#courses" class="primary-btn">
+                        Explore Courses →
+                    </a>
+
+                    <a href="#about" class="secondary-btn">
+                        Discover More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="about" id="about">
+            <div class="container about-grid">
+                <div>
+                    <img
+                        class="about-image"
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Students collaborating on a technology project"
+                    >
+                </div>
+
+                <div class="about-text">
+                    <div class="section-label">Who We Are</div>
+
+                    <h2 class="section-title">
+                        Shaping Tomorrow Through Technology
+                    </h2>
+
+                    <p>
+                        The Department of Computer Science is dedicated
+                        to academic excellence, technological innovation,
+                        and practical learning. We prepare students to
+                        solve real-world challenges through programming,
+                        artificial intelligence, and modern computing.
+                    </p>
+
+                    <div class="about-points">
+                        <div class="point">
+                            <strong>Expert Faculty</strong>
+                            <span>Learn from experienced mentors.</span>
+                        </div>
+
+                        <div class="point">
+                            <strong>Modern Labs</strong>
+                            <span>Learn through hands-on projects.</span>
+                        </div>
+
+                        <div class="point">
+                            <strong>Industry Skills</strong>
+                            <span>Develop practical knowledge.</span>
+                        </div>
+
+                        <div class="point">
+                            <strong>Innovation</strong>
+                            <span>Turn ideas into solutions.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COURSES SECTION -->
+        <section class="courses" id="courses">
+            <div class="container">
+                <div class="section-label">Explore Our Programs</div>
+
+                <h2 class="section-title">
+                    Learn. Build. Lead.
+                </h2>
+
+                <p class="section-description">
+                    Explore the technologies transforming the digital
+                    world and develop the skills to shape its future.
+                </p>
+
+                <div class="course-grid">
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+                            alt="Computer hardware"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">💻</div>
+                            <h3>Computer Science</h3>
+                            <p>
+                                Programming, data structures, algorithms,
+                                and software engineering.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Computer Science">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=80"
+                            alt="Artificial intelligence concept"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">🤖</div>
+                            <h3>Artificial Intelligence</h3>
+                            <p>
+                                Machine learning, deep learning,
+                                and intelligent systems.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Artificial Intelligence">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80"
+                            alt="Data analytics dashboard"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">📊</div>
+                            <h3>Data Science</h3>
+                            <p>
+                                Data analysis, visualization,
+                                statistics, and predictive modelling.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Data Science">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80"
+                            alt="Global digital network"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">☁️</div>
+                            <h3>Cloud Computing</h3>
+                            <p>
+                                Cloud infrastructure, DevOps,
+                                deployment, and distributed systems.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Cloud Computing">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=700&q=80"
+                            alt="Cybersecurity technology"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">🔐</div>
+                            <h3>Cyber Security</h3>
+                            <p>
+                                Network security, digital safety,
+                                and security analysis.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Cyber Security">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="course-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80"
+                            alt="Technology project collaboration"
+                        >
+                        <div class="course-content">
+                            <div class="course-icon">🌐</div>
+                            <h3>Web Technologies</h3>
+                            <p>
+                                Build modern websites and interactive
+                                applications using web technologies.
+                            </p>
+                            <a href="#contact" class="course-link"
+                               data-course="Web Technologies">
+                                Explore Program →
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FACULTY SECTION -->
+        <section class="faculty" id="faculty">
+            <div class="container">
+                <div class="section-label">Meet Our Team</div>
+
+                <h2 class="section-title">
+                    Our Faculty
+                </h2>
+
+                <p class="section-description">
+                    Dedicated educators guiding students toward
+                    academic excellence and professional growth.
+                </p>
+
+                <div class="faculty-grid">
+
+                    <article class="faculty-card">
+                        <div class="faculty-avatar">RK</div>
+                        <h3>Dr. Ravi Kumar</h3>
+                        <p>Head of Department</p>
+                        <p class="special">Computer Networks</p>
+                    </article>
+
+                    <article class="faculty-card">
+                        <div class="faculty-avatar">PS</div>
+                        <h3>Prof. Priya Sharma</h3>
+                        <p>Associate Professor</p>
+                        <p class="special">Artificial Intelligence</p>
+                    </article>
+
+                    <article class="faculty-card">
+                        <div class="faculty-avatar">AR</div>
+                        <h3>Prof. Arjun Rao</h3>
+                        <p>Assistant Professor</p>
+                        <p class="special">Data Science</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- STATISTICS SECTION -->
+        <section class="stats" id="statistics">
+            <div class="container stats-grid">
+
+                <div class="stat">
+                    <h2>500+</h2>
+                    <p>Students</p>
+                </div>
+
+                <div class="stat">
+                    <h2>25+</h2>
+                    <p>Faculty Members</p>
+                </div>
+
+                <div class="stat">
+                    <h2>10+</h2>
+                    <p>Research Projects</p>
+                </div>
+
+                <div class="stat">
+                    <h2>100%</h2>
+                    <p>Placement Support</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RESEARCH SECTION -->
+        <section id="research">
+            <div class="container">
+                <div class="section-label">Explore The Future</div>
+
+                <h2 class="section-title">
+                    Research & Innovation
+                </h2>
+
+                <p class="section-description">
+                    Discover emerging technologies and develop
+                    solutions that can make a real difference.
+                </p>
+
+                <div class="research-grid">
+
+                    <article class="research-card">
+                        <div class="symbol">✧</div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>
+                            Explore intelligent systems, machine learning,
+                            and responsible AI applications.
+                        </p>
+                    </article>
+
+                    <article class="research-card">
+                        <div class="symbol">⌘</div>
+                        <h3>Software Innovation</h3>
+                        <p>
+                            Create efficient applications, modern
+                            platforms, and practical digital solutions.
+                        </p>
+                    </article>
+
+                    <article class="research-card">
+                        <div class="symbol">⬡</div>
+                        <h3>Data & Cybersecurity</h3>
+                        <p>
+                            Investigate data-driven decisions, privacy,
+                            and secure computing technologies.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ANNOUNCEMENTS SECTION -->
+        <section class="announcements" id="announcements">
+            <div class="container">
+                <div class="section-label">What's Happening</div>
+
+                <h2 class="section-title">
+                    Latest Announcements
+                </h2>
+
+                <p class="section-description">
+                    Stay informed about department activities
+                    and upcoming academic events.
+                </p>
+
+                <div class="announcement-list">
+
+                    <article class="announcement">
+                        <div class="announcement-icon">🏆</div>
+                        <div>
+                            <h3>
+                                Coding Competition Registration
+                                <span class="new-label">NEW</span>
+                            </h3>
+                            <p>
+                                Registration is open for the upcoming
+                                department coding competition.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="announcement">
+                        <div class="announcement-icon">🧠</div>
+                        <div>
+                            <h3>Artificial Intelligence Seminar</h3>
+                            <p>
+                                Join the department seminar on emerging
+                                AI technologies and applications.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="announcement">
+                        <div class="announcement-icon">📅</div>
+                        <div>
+                            <h3>Academic Updates</h3>
+                            <p>
+                                Check the official college portal
+                                for examination schedules and notices.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <div class="container contact-grid">
+
+                <div>
+                    <div class="section-label">Get In Touch</div>
+
+                    <h2 class="section-title">
+                        Contact Our Department
+                    </h2>
+
+                    <p class="section-description">
+                        Have questions about our programs or department
+                        activities? Send us a message.
+                    </p>
+
+                    <div class="contact-info">
+                        <p>
+                            <strong>✉ Email:</strong>
+                            csdepartment@college.edu
+                        </p>
+
+                        <p>
+                            <strong>☎ Phone:</strong>
+                            +91 98765 43210
+                        </p>
+
+                        <p>
+                            <strong>⌖ Address:</strong>
+                            College Campus, Andhra Pradesh, India
+                        </p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Your full name"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Your email address"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="Subject"
+                        required
+                    >
+
+                    <textarea
+                        id="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="primary-btn">
+                        Send Message →
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#faculty">Faculty</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <p>
+                © 2026 <strong>CS Nexus</strong> —
+                Department of Computer Science.
+                All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // MOBILE NAVIGATION
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
+
+            menuBtn.textContent =
+                navLinks.classList.contains("show") ? "✕" : "☰";
+        });
+
+        // CLOSE MOBILE MENU AFTER CLICKING A LINK
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("show");
+                menuBtn.textContent = "☰";
+            });
+        });
+
+        // STUDENT PORTAL DEMO
+        document.getElementById("portalBtn").addEventListener("click", function () {
+            alert(
+                "Welcome to the Student Portal!\\n\\n" +
+                "This is a front-end demonstration. " +
+                "Connect your college authentication system " +
+                "to enable actual student login."
+            );
+        });
+
+        // COURSE SELECTION
+        document.querySelectorAll("[data-course]").forEach(function (link) {
+            link.addEventListener("click", function () {
+                const courseName = this.getAttribute("data-course");
+
+                alert(
+                    "Selected Course: " + courseName +
+                    "\\n\\nPlease contact the department " +
+                    "for official course details."
+                );
+            });
+        });
+
+        // CONTACT FORM DEMONSTRATION
+        document.getElementById("contactForm").addEventListener(
+            "submit",
+            function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const subject = document.getElementById("subject").value.trim();
+                const message = document.getElementById("message").value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    alert("Please complete all fields.");
+                    return;
+                }
+
+                alert(
+                    "Thank you, " + name + "!\n\n" +
+                    "Your message has been validated in this demo. " +
+                    "No email has been sent because a backend " +
+                    "service is not connected."
+                );
+
+                this.reset();
+            }
+        );
+    </script>
+
+</body>
+</html>
